@@ -7,7 +7,13 @@ const Item = require('./models/Item');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'https://curdf.mictech.dpdns.org'  // Add your frontend URL
+  ]
+}));
+
 app.use(express.json());
 
 mongoose.connect(process.env.MONGODB_URI)
